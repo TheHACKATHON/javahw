@@ -19,8 +19,8 @@ public class Task02 {
 	private static final CyclicBarrier BARRIER = new CyclicBarrier(10, new Stone());
 	private static final Random RND = new Random();
 
-	public static void main(String[] args) {
-		Executor pool = Executors.newCachedThreadPool();
+	public static void main(String[] args) throws InterruptedException {
+		ExecutorService pool = Executors.newCachedThreadPool();
 		pool.execute(new Human("Ваня"));
 		pool.execute(new Human("Саня"));
 		pool.execute(new Human("Паня"));
@@ -29,16 +29,11 @@ public class Task02 {
 		pool.execute(new Human("Маня"));
 		pool.execute(new Human("Соня"));
 		pool.execute(new Human("Даня"));
-		pool.execute(new Human("Аня"));
-		pool.execute(new Human("Веня"));
-		pool.execute(new Human("Сеня"));
-		pool.execute(new Human("Боря"));
-		pool.execute(new Human("Коля"));
 		pool.execute(new Human("Толя"));
 		pool.execute(new Human("Илья"));
-		pool.execute(new Human("Артём"));
-		pool.execute(new Human("Артур"));
-		pool.execute(new Human("Антон")); // 18
+
+		Thread.sleep(20 * 1000);
+		pool.shutdownNow();
 	}
 
 	public static class Stone implements Runnable {
@@ -61,9 +56,9 @@ public class Task02 {
 				try {
 					System.out.printf("%s ждёт у камня\n", _name);
 					BARRIER.await();
-					Thread.sleep(RND.nextInt(10000));
-				} catch (InterruptedException | BrokenBarrierException e) {
-					e.printStackTrace();
+					Thread.sleep(RND.nextInt(5000));
+				} catch (InterruptedException | BrokenBarrierException ignored) {
+					break;
 				}
 			}
 		}
