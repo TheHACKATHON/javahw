@@ -1,9 +1,9 @@
 [//]: # (Symbols: ✅ ❌ )
 ## Java homeworks
-С|Issued    |Subject|Link
+☑️|Issued    |Subject|Link
 -|----------|-------|----
 |||
-✅|25.09.2019| Знакомство с git |[git-25.09.2019.txt](https://github.com/TheHACKATHON/javahw/blob/master/git-25.09.2019.txt)
+✅|25.09.2019| Знакомство с git |[git-25.09.2019.txt](/TheHACKATHON/javahw/blob/master/git-25.09.2019.txt)
 ❌|23.09.2019|Рефлексия|
 ✅|18.09.2019|CyclicBarrier|[hw04](https://github.com/TheHACKATHON/javahw/tree/master/hw04)
 ❌|16.09.2019|Threads, deadlock|[deadlock](https://github.com/TheHACKATHON/javahw/tree/master/deadlock) \| [Загрузчик файлов](https://github.com/TheHACKATHON/javahw/tree/master/downloader)
@@ -12,4 +12,4 @@
 ✅|30.08.2019|Работа с файловой системой|[Индексация и поиск](https://github.com/TheHACKATHON/javahw/tree/master/everything) \| [Копирование файлов](https://github.com/TheHACKATHON/javahw/tree/master/copy)
 ❌|28.08.2019|Файловые потоки|[Налоговая](https://github.com/TheHACKATHON/javahw/tree/master/taxFine) \| [Todo list](https://github.com/TheHACKATHON/javahw/tree/master/todo)
 
-> C - Completed
+> ☑️ - Completed
