@@ -1,10 +1,13 @@
 package com.yevseienko;
 
+import com.github.amr.mimetypes.MimeType;
+import com.github.amr.mimetypes.MimeTypes;
+
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -14,6 +17,9 @@ public class Downloader {
 	private static final int THREAD_COUNT = 5;
 	private static final ExecutorService EXECUTOR = Executors.newFixedThreadPool(THREAD_COUNT);
 	// private static final ArrayList<String>
+	static {
+		MimeTypes.blank().load(Paths.get("src", "main", "resources", "mime.types"));
+	}
 
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
@@ -30,6 +36,7 @@ public class Downloader {
 			System.out.print("Меню:\n" +
 					"\t1. Загрузить файл\n" +
 					"\t2. Посмотреть прогресс загрузки" +
+					"\t3. Загрузить тестовые 10 файлов" +
 					"\n\t0. Выход\n>");
 			menuString = in.next().trim();
 			if (Pattern.matches("^\\d$", menuString)) {
@@ -61,10 +68,12 @@ public class Downloader {
 
 	private static void download(String webPath, String saveDirectory) {
 		URI path = URI.create(webPath);
+		Download file = getFileType(path);
+
 		HttpRequest request = HttpRequest.newBuilder()
 				.uri(path).GET().build();
 
-		var fragment = path.getPath();
+	/*	var fragment = path.getPath();
 		var file = fragment.substring(fragment.lastIndexOf('/') + 1);
 		HttpClient.newBuilder()
 				.executor(EXECUTOR)
@@ -73,7 +82,53 @@ public class Downloader {
 				.sendAsync(request, HttpResponse.BodyHandlers.ofFile(Path.of("./", saveDirectory, file)))
 				.whenCompleteAsync((p, k) -> {
 					System.out.println("[" + Thread.currentThread().getId() + "]" + file + " загружен");
+				});*/
+	}
+
+	private static Download getFileType(URI path){
+		Download download = new Download(path);
+		String fragment = path.getPath();
+		String filename = fragment.substring(fragment.lastIndexOf('/') + 1);
+		if(filename.contains(".")){
+			int idx = filename.lastIndexOf('.');
+			download.setExtFileName(filename.substring(idx + 1));
+			download.setFileName(filename.substring(0, idx));
+		}
+
+		HttpRequest headerRequest = HttpRequest.newBuilder()
+				.uri(path).method("HEAD", HttpRequest.BodyPublishers.noBody()).build();
+		HttpClient.newBuilder()
+				.executor(EXECUTOR)
+				.followRedirects(HttpClient.Redirect.ALWAYS)
+				.build()
+				.sendAsync(headerRequest, HttpResponse.BodyHandlers.ofString())
+				.thenApply((response) -> {
+					// TODO: достать хедеры content-type и content-length
+					Map<String, List<String>> headers = response.headers().map();
+					String headerContentLen = "Content-Length";
+					String headerContentType = "Content-Type";
+					String typeBinary = "application/octet-stream";
+
+					if(headers.containsKey(headerContentLen)){
+						download.setLen(Integer.parseInt(headers.get(headerContentLen).get(0)));
+					}
+					if(headers.containsKey(headerContentType)){
+						String typeFromHeader = headers.get(headerContentType).get(0);
+						MimeType mime = MimeTypes.getInstance().getByType(typeFromHeader);
+
+						if(typeFromHeader.equals(typeBinary) || mime == null){
+							// TODO: get type from file extension
+							download.setExtSave(download.getExtFileName());
+						}
+						else{
+							String extFromMIME = mime.getExtension();
+							download.setExtSave(extFromMIME);
+						}
+					}
+					return response;
 				});
+
+		return download;
 	}
 
 	private static void cls() {
@@ -110,4 +165,7 @@ public class Downloader {
 			return TRY_AGAIN;
 		}
 	}
+
+
 }
+
