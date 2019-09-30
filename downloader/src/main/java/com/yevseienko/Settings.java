@@ -6,14 +6,15 @@ import java.nio.file.Paths;
 
 public final class Settings implements Serializable {
 	private static Path _sSettingsPath = Paths.get(".", ".settings");
+	private static String _sDefaultDownloadPath = "download";
 	private static Settings _sSettings;
-	private Path _sDownloadPath;
-	private Path _sMimeTypesPath;
+	private String _sDownloadPath;
+	private String _sMimeTypesPath;
 
 	private Settings() {
 		// эти значения заполнятся при первом запуске, дальше будут тянуться сериализированные
-		this._sDownloadPath = Paths.get("downloads");
-		this._sMimeTypesPath = Paths.get("src", "main", "resources", "mime.types");
+		this._sDownloadPath = _sDefaultDownloadPath;
+		this._sMimeTypesPath = Paths.get("src", "main", "resources", "mime.types").toString();
 	}
 
 	public static Settings get() {
@@ -24,20 +25,20 @@ public final class Settings implements Serializable {
 	}
 
 	public Path getDownloadPath() {
-		return _sDownloadPath;
+		return Path.of(_sDownloadPath);
 	}
 
 	public Path getMimeTypesPath() {
-		return _sMimeTypesPath;
+		return Path.of(_sMimeTypesPath);
 	}
 
 	public void setDownloadPath(Path downloadPath) {
-		this._sDownloadPath = downloadPath;
+		this._sDownloadPath = downloadPath.toString();
 		save();
 	}
 
 	public void setMimeTypesPath(Path mimeTypesPath) {
-		this._sMimeTypesPath = mimeTypesPath;
+		this._sMimeTypesPath = mimeTypesPath.toString();
 		save();
 	}
 
