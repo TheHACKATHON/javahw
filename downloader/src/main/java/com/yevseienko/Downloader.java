@@ -1,14 +1,8 @@
 package com.yevseienko;
 
-import com.github.amr.mimetypes.MimeType;
-import com.github.amr.mimetypes.MimeTypes;
-
 import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.nio.file.Paths;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.regex.Pattern;
@@ -16,12 +10,9 @@ import java.util.regex.Pattern;
 public class Downloader {
 	private static final int THREAD_COUNT = 5;
 	private static final ExecutorService EXECUTOR = Executors.newFixedThreadPool(THREAD_COUNT);
-	// private static final ArrayList<String>
-	static {
-		MimeTypes.blank().load(Paths.get("src", "main", "resources", "mime.types"));
-	}
+	private static final ArrayList<Download> _downloads = new ArrayList<>();
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		Scanner in = new Scanner(System.in);
 		String menuString = null;
 		String message = null;
@@ -32,12 +23,14 @@ public class Downloader {
 			cls();
 			if (message != null) {
 				System.out.println("[INFO]:" + message);
+				message = null;
 			}
-			System.out.print("Меню:\n" +
+			System.out.printf("Меню:\n" +
 					"\t1. Загрузить файл\n" +
-					"\t2. Посмотреть прогресс загрузки" +
-					"\t3. Загрузить тестовые 10 файлов" +
-					"\n\t0. Выход\n>");
+					"\t2. Посмотреть прогресс загрузки\n" +
+					"\t3. Загрузить тестовые 10 файлов\n" +
+					"\t4. Изменить папку загруки(%s)\n" +
+					"\n\t0. Выход\n>", Settings.get().getDownloadPath().toString());
 			menuString = in.next().trim();
 			if (Pattern.matches("^\\d$", menuString)) {
 				int menuInt = Integer.parseInt(menuString);
@@ -51,12 +44,27 @@ public class Downloader {
 					break mainWhile;
 				case DOWNLOAD:
 					System.out.print("Вставьте ссылку на файл: ");
-					String url = new Scanner(System.in).nextLine();
-					download(url, "downloads");
-					// TODO: запросить у пользователя куда сохранять
+					String path = new Scanner(System.in).nextLine().trim();
+					download(path);
 					break;
 				case SHOW_PROGRESS:
 					message = "Show progress";
+					break;
+				case TEST:
+					message = "начал загрузку десяти файлов";
+					download("https://github.com/maxchv/javalesson2019/raw/master/books/OCA%20Oracle%20Certified%20Associate%20Java%20SE%208%20Programmer%20I%20Study%20Guide%20Exam%201Z0-808.pdf");
+					download("https://github.com/maxchv/javalesson2019/raw/master/books/Oracle%20Certified%20Professional%20Java%20SE%208%20Programmer%20Exam%201Z0-809.pdf");
+					download("https://github.com/maxchv/javalesson2019/raw/master/books/java%20для%20профессионалов.pdf");
+					download("https://github.com/maxchv/javalesson2019/raw/master/01.java/module11/hw01.rar");
+					download("https://github.com/maxchv/javalesson2019/raw/master/01.java/module11/hw03.rar");
+					download("https://github.com/maxchv/javalesson2019/raw/master/01.java/module11/hw02.txt");
+					download("https://github.com/maxchv/javalesson2019/raw/master/01.java/module13/Modul%2011%20Vychislitelnye%20potoki.pptx");
+					download("https://github.com/maxchv/javalesson2019/raw/master/01.java/module13/README.md");
+					download("https://github.com/maxchv/javalesson2019/raw/master/01.java/module13/hw04/pom.xml");
+					download("http://130.61.122.39/index.php/s/Sd3CLXZQtMfp56o/download");
+
+					break;
+				case CHANGE_DOWNLOAD_DIR:
 					break;
 				case TRY_AGAIN:
 					message = "Try again";
@@ -66,106 +74,15 @@ public class Downloader {
 		EXECUTOR.shutdown();
 	}
 
-	private static void download(String webPath, String saveDirectory) {
+	private static void download(String webPath) {
 		URI path = URI.create(webPath);
-		Download file = getFileType(path);
-
-		HttpRequest request = HttpRequest.newBuilder()
-				.uri(path).GET().build();
-
-	/*	var fragment = path.getPath();
-		var file = fragment.substring(fragment.lastIndexOf('/') + 1);
-		HttpClient.newBuilder()
-				.executor(EXECUTOR)
-				.followRedirects(HttpClient.Redirect.ALWAYS)
-				.build()
-				.sendAsync(request, HttpResponse.BodyHandlers.ofFile(Path.of("./", saveDirectory, file)))
-				.whenCompleteAsync((p, k) -> {
-					System.out.println("[" + Thread.currentThread().getId() + "]" + file + " загружен");
-				});*/
-	}
-
-	private static Download getFileType(URI path){
-		Download download = new Download(path);
-		String fragment = path.getPath();
-		String filename = fragment.substring(fragment.lastIndexOf('/') + 1);
-		if(filename.contains(".")){
-			int idx = filename.lastIndexOf('.');
-			download.setExtFileName(filename.substring(idx + 1));
-			download.setFileName(filename.substring(0, idx));
-		}
-
-		HttpRequest headerRequest = HttpRequest.newBuilder()
-				.uri(path).method("HEAD", HttpRequest.BodyPublishers.noBody()).build();
-		HttpClient.newBuilder()
-				.executor(EXECUTOR)
-				.followRedirects(HttpClient.Redirect.ALWAYS)
-				.build()
-				.sendAsync(headerRequest, HttpResponse.BodyHandlers.ofString())
-				.thenApply((response) -> {
-					// TODO: достать хедеры content-type и content-length
-					Map<String, List<String>> headers = response.headers().map();
-					String headerContentLen = "Content-Length";
-					String headerContentType = "Content-Type";
-					String typeBinary = "application/octet-stream";
-
-					if(headers.containsKey(headerContentLen)){
-						download.setLen(Integer.parseInt(headers.get(headerContentLen).get(0)));
-					}
-					if(headers.containsKey(headerContentType)){
-						String typeFromHeader = headers.get(headerContentType).get(0);
-						MimeType mime = MimeTypes.getInstance().getByType(typeFromHeader);
-
-						if(typeFromHeader.equals(typeBinary) || mime == null){
-							// TODO: get type from file extension
-							download.setExtSave(download.getExtFileName());
-						}
-						else{
-							String extFromMIME = mime.getExtension();
-							download.setExtSave(extFromMIME);
-						}
-					}
-					return response;
-				});
-
-		return download;
+		Download file = new Download(path);
+		_downloads.add(file);
+		EXECUTOR.execute(file);
 	}
 
 	private static void cls() {
-		System.out.println("\n".repeat(10)) ;
+		System.out.println("\n".repeat(10));
 	}
-
-	private enum Menu {
-		EXIT(0), DOWNLOAD(1), SHOW_PROGRESS(2), TRY_AGAIN(-1);
-
-		private int _number;
-		private static Map<Integer, Menu> _menu = null;
-
-		public int getNumber() {
-			return _number;
-		}
-
-		private Menu(int num) {
-			_number = num;
-		}
-
-		public static Menu getByNumber(int num) {
-			if (_menu == null) {
-				ArrayList<Menu> menu = new ArrayList<>(Arrays.asList(Menu.values()));
-				_menu = new HashMap<>();
-				for (Menu m : menu) {
-					_menu.put(m._number, m);
-				}
-
-			}
-
-			if (_menu.containsKey(num)) {
-				return _menu.get(num);
-			}
-			return TRY_AGAIN;
-		}
-	}
-
-
 }
 
