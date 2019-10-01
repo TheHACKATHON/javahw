@@ -54,7 +54,7 @@ public class Downloader {
 					if (_downloads.size() > 0) {
 						for (Download file : _downloads) {
 							float percent = file.getDownloadPercent();
-							message.append(String.format("%s %.2f%% %s\n", visualizeDownloadPercent(percent), percent, file.getFileName()));
+							message.append(String.format("%s %.2f%% %s bytes %s\n", visualizeDownloadPercent(percent), percent, file.getLen(), file.getFileName()));
 						}
 					} else {
 						message.append("\tЕщё нет загрузок");
