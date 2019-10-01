@@ -8,14 +8,14 @@ import java.util.Map;
 public enum Menu {
 	EXIT(0), DOWNLOAD(1), SHOW_PROGRESS(2), TEST(3), CHANGE_DOWNLOAD_DIR(4), TRY_AGAIN(-1);
 
-	private int _number;
+	private final int _number;
 	private static Map<Integer, Menu> _menu = null;
 
 	public int getNumber() {
 		return _number;
 	}
 
-	private Menu(int num) {
+	Menu(int num) {
 		_number = num;
 	}
 

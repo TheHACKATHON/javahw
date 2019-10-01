@@ -5,8 +5,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public final class Settings implements Serializable {
-	private static Path _sSettingsPath = Paths.get(".", ".settings");
-	private static String _sDefaultDownloadPath = "download";
+	private static final Path _sSettingsPath = Paths.get(".", ".settings");
+	private static final String _sDefaultDownloadPath = "downloads";
 	private static Settings _sSettings;
 	private String _sDownloadPath;
 	private String _sMimeTypesPath;
@@ -42,7 +42,7 @@ public final class Settings implements Serializable {
 		save();
 	}
 
-	public static void save() {
+	private static void save() {
 		try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(_sSettingsPath.toFile()))) {
 			outputStream.writeObject(_sSettings);
 		} catch (Exception ex) {
@@ -50,7 +50,7 @@ public final class Settings implements Serializable {
 		}
 	}
 
-	public static void reload() {
+	private static void reload() {
 		try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(_sSettingsPath.toFile()))) {
 			Settings tmp = (Settings) inputStream.readObject();
 			if (tmp == null) {
