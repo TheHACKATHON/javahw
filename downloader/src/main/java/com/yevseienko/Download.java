@@ -117,7 +117,7 @@ public class Download implements Runnable {
 		}
 	}
 
-	private boolean getFileInfo(URI path) throws IOException, InterruptedException {
+	private boolean getFileInfo(URI path){
 		String fragment = path.getPath();
 		_fileName = fragment.substring(fragment.lastIndexOf('/') + 1);
 		if (_fileName.contains(".")) {
@@ -129,16 +129,20 @@ public class Download implements Runnable {
 		try {
 			headerRequest = HttpRequest.newBuilder()
 					.uri(path).method("HEAD", HttpRequest.BodyPublishers.noBody()).build();
-		}catch (Exception ignored){
+		} catch (Exception ignored) {
 			System.out.println("Ссылка имеет неверный формат или файл недоступен");
 			return false;
 		}
-
-		HttpResponse response = HttpClient.newBuilder()
-				//.executor(EXECUTOR)
-				.followRedirects(HttpClient.Redirect.ALWAYS)
-				.build()
-				.send(headerRequest, HttpResponse.BodyHandlers.ofString());
+		HttpResponse response = null;
+		try {
+			response = HttpClient.newBuilder()
+					//.executor(EXECUTOR)
+					.followRedirects(HttpClient.Redirect.ALWAYS)
+					.build()
+					.send(headerRequest, HttpResponse.BodyHandlers.ofString());
+		} catch (Exception ex) {
+			System.out.println("Не удалось загрузить " + path.toString());
+		}
 
 		Map<String, List<String>> headers = response.headers().map();
 		String headerContentLen = "Content-Length";
@@ -167,12 +171,8 @@ public class Download implements Runnable {
 
 	@Override
 	public void run() {
-		try {
-			if(getFileInfo(_uri)){
-				download();
-			}
-		} catch (IOException | InterruptedException e) {
-			e.printStackTrace();
+		if (getFileInfo(_uri)) {
+			download();
 		}
 	}
 }

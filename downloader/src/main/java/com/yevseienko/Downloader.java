@@ -70,8 +70,8 @@ public class Downloader {
 					download("https://github.com/maxchv/javalesson2019/raw/master/01.java/module11/Modul%2010%20Rabota%20s%20faylami.ppt");
 					download("https://github.com/maxchv/javalesson2019/raw/master/01.java/module13/Modul%2011%20Vychislitelnye%20potoki.pptx");
 					download("https://github.com/maxchv/javalesson2019/raw/master/01.java/module13/README.md");
-					download("http://130.61.122.39:2520/5385A1355D88617.ts");
-					download("http://130.61.122.39:2520/0D3FFEA11525312.mp4");
+					download("http://130.61.95.235:2520/5385A1355D88617.ts");
+					download("http://130.61.95.235:2520/0D3FFEA11525312.mp4");
 
 					break;
 				case CHANGE_DOWNLOAD_DIR:
