@@ -2,6 +2,7 @@
 ## Java homeworks
 ☑️|Id|Issued    |Subject|Link
 -|--|----------|-------|----
+✅|35|16.10.2019| Паттерны |[composite](/composite)
 ✅|34|25.09.2019| Знакомство с git |[git-25.09.2019.txt](/git-25.09.2019.txt)
 ❌|33|23.09.2019|Рефлексия|[RunIt](/runIt) \| [Service](/valueAnnotation) \| [Fraction test](/fraction)
 ✅|32|18.09.2019|CyclicBarrier|[hw04](/hw04)
