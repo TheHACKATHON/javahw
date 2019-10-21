@@ -2,7 +2,7 @@
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # убрал тестовые загрузки в downloader
-downloader/downloads
+31_downloader/downloads
 
 # настройки приложений 
 */.settings
