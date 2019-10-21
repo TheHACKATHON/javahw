@@ -6,8 +6,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
+@Target(ElementType.TYPE)
 public @interface Test{
+	String methodName();
+	// method names: add, minus, multiple, division
 	int aNumerator();
 	int aDenominator();
 	int bNumerator();
