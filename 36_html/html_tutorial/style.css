@@ -15,9 +15,7 @@ h1{text-align: center; margin: 10px;}
 h2{text-align: center; margin-top: 10px; margin-bottom: 20px;}
 .italic{font-style: italic;}
 .bold{font-weight: 700;}
-/*.dotted-underline{text-decoration: dotted;}*/
-/* ! text-decoration:dotted не работает */
-.dotted-underline{text-decoration: underline;}
+.dotted-underline{border-bottom: 2px black dotted;}
 p{margin-bottom: 15px;}
 .searchTag{margin:0; background-color: #dcdcdc; color: #35989c; font-weight: 500; cursor: pointer;}
 .searchTag:hover{background-color:#e4e4e4;}
