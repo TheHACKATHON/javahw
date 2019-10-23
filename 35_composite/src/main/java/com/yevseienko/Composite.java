@@ -10,11 +10,11 @@ import java.util.List;
 public class Composite {
 	public static void main(String[] args) {
 		Corporation ms = new Corporation("Microsoft");
-		Unit market = new Unit("Market");
-		Unit dev = new Unit("Development");
+		Department market = new Department("Market");
+		Department dev = new Department("Development");
 		ms.addChildren(new Unit("HH"), market, dev);
-		market.addChildren(new Department("USA"), new Department("US"), new Department("EU"));
-		dev.addChildren(new Department("Game"), new Department("Office"), new Department("OS"));
+		market.addChildren(new Unit("USA"), new Unit("US"), new Unit("EU"));
+		dev.addChildren(new Unit("Game"), new Unit("Office"), new Unit("OS"));
 
 		// структура корпорации
 		System.out.println(ms.getStructString());
@@ -26,4 +26,3 @@ public class Composite {
 		}
 	}
 }
-
