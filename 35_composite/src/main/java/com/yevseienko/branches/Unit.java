@@ -6,4 +6,9 @@ public class Unit extends Branch {
 		super(name);
 		type = "Подразделение";
 	}
+
+	@Override
+	public void addChildren(Branch... branches) {
+		throw new RuntimeException("Подразделение не составной объект");
+	}
 }
