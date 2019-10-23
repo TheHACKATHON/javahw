@@ -1,0 +1,11 @@
+body{background-color:#edeef0;}
+#root{display: flex; flex-direction: column; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 1010px; margin: 0 auto;}
+.block{background-color:#fff; padding: 20px; border-radius: 4px; box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;}
+.cards{display: flex; margin: 5px 0; font-size: 23px;}
+.card{padding:4px; background-color:#e6e9ec; margin: 0 4px 0 0;display:flex; font-weight: 500;}
+.red{color:#a80b0b;}
+.black{color:#000;}
+.hearts:after{content:"♥";}
+.diamonds:after{content:"♦";}
+.spades:after{content:"♠";}
+.clubs:after{content:"♣";}

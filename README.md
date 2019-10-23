@@ -2,6 +2,8 @@
 ## Java homeworks
 ☑️|Id|Issued    |Subject|Link
 -|--|----------|-------|----
+✅|36|23.10.2019| HTML5 |[3 tasks](/36_html)
+-||||
 ✅|35|16.10.2019| Паттерны |[composite](/35_composite)
 ✅|34|25.09.2019| Знакомство с git |[git-25.09.2019.txt](/34_git-25.09.2019.txt)
 ✅|33|23.09.2019|Рефлексия|[RunIt](/33_runIt) \| [Service](/33_valueAnnotation) \| [Fraction test](/33_fraction)

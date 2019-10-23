@@ -1,0 +1,8 @@
+body{background-color:#edeef0;}
+.root{display: flex; padding: 20px; flex-direction: column; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 800px; margin: 0 auto;}
+.block{ background-color:#fff; border-radius: 4px; box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;}
+.title{color:#453c8b; text-align: center; font-weight: 700;margin: 12px 0;}
+.header{color:#718096; margin: 12px 0;}
+.text{margin: 10px 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 23px;}
+.quote{font-style: italic; font-size: 12px; margin: 12px 0;}
+.role{color:#718096; margin: 12px 0; font-size: 15px;}
