@@ -1,0 +1,7 @@
+body{background-color:#edeef0;}
+.root{display: flex; padding: 20px 30px; flex-direction: column; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 800px; margin: 0 auto;}
+.block{ background-color:#fff; border-radius: 4px; box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;}
+ol{background-color: #ED9EAE; padding: 10px; color:#E7E8EA;}
+ol li{ position: relative; background-color: #C66376; padding: 5px 5px; margin:5px; list-style-position: inside; padding-left: 10px;}
+ol li span{background-color: #9E354A; padding: 5px 10px;}
+ol li::before{padding: 0 2px; content:"";}
