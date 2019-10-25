@@ -2,13 +2,16 @@ body{background-color:#edeef0;}
 .root{display: flex; flex-direction: column; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 1010px; margin: 0 auto;}
 .block{ background-color:#fff; padding: 20px; border-radius: 4px; box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;}
 ul.todo>li{list-style-position: inside; list-style-image: url("./../icons/unchecked_16.png"); background-color: #a5ccda; padding: 10px 30px; font-weight: 500; cursor: pointer; user-select: none;}
-ul.todo>li::after{content: "×"; color: #8b0000; font-family: sans-serif; margin-left: 20px; font-weight: 600;}
 ul.todo>li:nth-child(2n){background-color: #add8e6;}
 ul.todo>li.checked{list-style-image: url("./../icons/checked_16.png"); background-color: #e2e2e2; text-decoration: line-through}
-ul.todo>li.checked::after{display: inline-block;}
+/* Переделал на кнопку */
+/* ul.todo>li::after{content: "×"; color: #8b0000; font-family: sans-serif; margin-left: 20px; font-weight: 600;} */
+/* ul.todo>li.checked::after{display: inline-block;} */
 ul{margin: 20px -20px; margin-bottom: 0;}
 button{font-family: sans-serif; font-weight: 500; border: 1px solid #000; padding: 2px 5px; border-radius: 5px; outline: none;}
 button:hover{background-color: #a5ccda;}
 input[type="text"] { border-radius: 5px; padding: 2px;}
 header{display: flex;}
 .new-task{margin-left: 20px;}
+a.remove-btn{color: #8b0000; font-family: sans-serif; margin-left: 20px; font-weight: 600; display: inline-block;}
+a.remove-btn::after{content:"×";}
