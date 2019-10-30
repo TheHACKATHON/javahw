@@ -3,6 +3,7 @@
 
 # убрал тестовые загрузки в downloader
 31_downloader/downloads
+38_html/layout
 
 # настройки приложений 
 */.settings
