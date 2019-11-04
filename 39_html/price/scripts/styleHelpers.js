@@ -13,6 +13,7 @@ export class StyleColor {
   static get Purple() {
     return "block-purple";
   }
+}
 
 export class StyleCurrency {
   static get Dollar() {
