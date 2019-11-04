@@ -2,6 +2,7 @@
 ## Java homeworks
 ☑️|Id|Issued    |Subject|Link
 -|--|----------|-------|----
+✅|39|30.10.2019| CSS |[3 tasks(menu, table, price)](/39_html)
 ✅|38|28.10.2019| HTML5 гиперссылки |[4 tasks(fridge, menu, layout, footer)](/38_html)
 ✅|37|23.10.2019| HTML5 lists |[3 tasks(todo)](/37_html)
 ✅|36|21.10.2019| HTML5 syntax |[3 tasks(black jack, html tutor, romeo & juliet)](/36_html)
