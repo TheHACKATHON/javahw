@@ -1,3 +1,4 @@
+/* jshint esversion: 6 */
 class MenuItem {
     constructor(name, imagePath, link) {
         this.name = name;
