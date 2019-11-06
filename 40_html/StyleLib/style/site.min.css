@@ -1,0 +1,2 @@
+body{background-color:#f1f1f1}input[type=text]{border:0;-webkit-box-shadow:0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;box-shadow:0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;padding:10px 15px;border-radius:2px}input[type=text].valid{-webkit-box-shadow:0 1px 0 0 #459421,0 0 0 1px #4da525;box-shadow:0 1px 0 0 #459421,0 0 0 1px #4da525;color:#459421}input[type=text].valid+label:first-of-type::after{margin-left:-25px;content:"\2714";color:#459421;width:16px;height:16px}
+/*# sourceMappingURL=site.min.css.map */
