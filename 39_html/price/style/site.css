@@ -30,7 +30,7 @@ body {
   flex-flow: column nowrap;
   align-items: center;
   background-color: #fff;
-  transition: transform 1s ease;
+  transition: transform 0.3s ease;
   z-index: 1;
 
 }
