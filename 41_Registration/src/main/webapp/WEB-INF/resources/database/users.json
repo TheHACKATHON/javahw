@@ -1,0 +1,10 @@
+[
+	{
+		"user":
+		{
+			"username": "admin",
+			"passwordHash": "admin",
+			"cookie": "qwerty",
+		},
+	}
+]

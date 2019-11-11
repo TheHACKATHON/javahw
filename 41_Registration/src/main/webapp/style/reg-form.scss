@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+$primary: #008b8b;
+$secondary: #006767;
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f5f5f5;
+}
+
+a {
+  text-decoration: none;
+  color: $primary;
+  transition: color 0.2s ease;
+
+  &:hover {
+    text-decoration: none;
+    color: $secondary;
+  }
+}
+
+form {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 15px 30px;
+
+  display: flex;
+  flex-flow: row wrap;
+
+  background-color: #f5f5f5;
+  box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.5);
+  user-select: none;
+
+  hr{
+    width: 110%;
+    margin: 0 -30px;
+    border-color: rgba(238, 238, 238, 0.62);
+  }
+
+  input[type=button],
+  input[type=submit]{
+    background-color: $primary;
+    border: 0;
+    padding: 10px 40px;
+    text-transform: uppercase;
+    margin: 10px;
+    border-radius: 4px;
+    color: #fff;
+    box-shadow: 2px 1px 3px 0 rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-weight: 500;
+
+    &:hover{
+      background-color: $secondary;
+    }
+  }
+
+  .form-footer{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .block {
+    width: 50%;
+    display: flex;
+    flex-flow: column nowrap;
+
+    input,
+    select{
+      background-color: transparent;
+      border: 0;
+      border-bottom: 1px solid #ccc;
+      outline: none;
+      padding: 5px;
+      display: inline-block;
+    }
+
+    label {
+      margin: 10px;
+    }
+
+    select{
+      appearance: none;
+      width: 100%;
+    }
+
+    & > label input:not([type=checkbox]) {
+      width: 100%;
+    }
+
+    & > div {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+
+      & > label {
+        width: 100%;
+
+        input {
+          width: 96%;
+        }
+      }
+    }
+
+    .side-icon {
+      display: flex;
+
+      &:before {
+        content: "";
+        background-size: 20px 20px;
+        background-repeat: no-repeat;
+        width: 24px;
+        height: 20px;
+        display: block;
+      }
+
+      &.conf-passwd:before{
+        display: none;
+      }
+    }
+
+    .username:before {
+      background-image: url("/images/username.png");
+    }
+
+    .email:before {
+      background-image: url("/images/email.png");
+    }
+
+    .passwd:before{
+      background-image: url("/images/pswd.png");
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  form {
+    flex-flow: column nowrap;
+
+    .block {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  form {
+    .block {
+      width: 100%;
+
+      & > div{
+        flex-flow: column nowrap;
+
+        label{
+          width: auto;
+        }
+      }
+
+      .side-icon.conf-passwd:before{
+        display: block;
+      }
+    }
+  }
+}

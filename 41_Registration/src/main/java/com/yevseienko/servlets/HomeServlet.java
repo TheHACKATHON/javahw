@@ -1,0 +1,21 @@
+package com.yevseienko.servlets;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
+
+public class HomeServlet extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		ServletContext servletContext = getServletContext();
+		String contextPath = servletContext.getRealPath(File.separator);
+
+		Business.isLogined(servletContext, req);
+
+		servletContext.getRequestDispatcher("/WEB-INF/resources/registration.html").forward(req, resp);
+	}
+}
