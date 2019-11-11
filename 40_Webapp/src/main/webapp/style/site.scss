@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: #ebebeb;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+body{
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+main{
+  width: 100%;
+  overflow: auto;
+}
+
+.sidebar {
+  height: 100%;
+  width: 260px;
+  background-color: #ddd;
+  display: flex;
+  flex-flow: column nowrap;
+  flex-shrink: 0;
+  z-index: 100;
+
+  &.right{
+    order: 2;
+  }
+
+  .sidebar-btn{
+    padding: 2px;
+    background-color: #f5f5f5;
+    border: 0;
+    border-radius: 2px;
+    margin-left: 5px;
+  }
+
+  .side-title {
+    height: 44px;
+    line-height: 44px;
+    background-color: rgba(0, 0, 0, .1);
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .side-items {
+    overflow: auto;
+
+    .item {
+      position: relative;
+      cursor: pointer;
+      font-size: 14px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      width: 100%;
+      color: rgba(0, 0, 0, .75);
+      user-select: none;
+      display: flex;
+      flex-flow: column nowrap;
+
+      input[type=checkbox]{
+        display: none;
+      }
+
+      label{
+        padding: 3px 15px;
+        cursor: pointer;
+      }
+
+      .collapse:checked {
+        & + label:before{
+          content: "\25BE";
+        }
+
+        & ~ .item {
+          height: auto;
+
+          a{
+            padding: 3px 15px 3px 30px;
+          }
+        }
+      }
+
+      &:not(.subItem) label {
+        &:before {
+          content: "\25B9";
+          position: absolute;
+          margin-left: -13px;
+        }
+      }
+
+      &.selected {
+        //background-color: rgba(0,0,0,.2);
+        background-color: #39f;
+        color: #fff;
+      }
+
+      .subItem {
+        height: 0;
+        padding: 0;
+        a {
+          color: rgba(0, 0, 0, .75);
+          text-decoration: none;
+
+          &:hover {
+            color: rgba(0, 0, 0, 0.85);
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}

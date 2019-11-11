@@ -1,0 +1,132 @@
+*{
+  --purple: #c73756;
+  --orange: #d7913b;
+  --blue: #2b5589;
+  --green: #63bb34;
+}
+
+body {
+  background-color: #edeef0;
+}
+#root {
+  display: flex;
+  flex-flow: row wrap;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1280px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+  align-items: center;
+  justify-content: center;
+}
+
+.block {
+  margin: 20px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+  border-radius: 10px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  background-color: #fff;
+  transition: transform 0.3s ease;
+  z-index: 1;
+
+}
+
+.block:hover{
+  transform: scale(1.1);
+  z-index: 2;
+}
+
+.block hr{
+  width: 100%;
+}
+
+.block-purple hr{
+  border: 2px solid var(--purple);
+}
+
+.block-orange hr{
+  border: 2px solid var(--orange);
+}
+
+.block-blue hr{
+  border: 2px solid var(--blue);
+}
+
+.block-green hr{
+  border: 2px solid var(--green);
+}
+
+.head {
+  text-transform: uppercase;
+  font-size: 14px;
+  padding-top: 14px;
+}
+
+.price {
+  text-align: center;
+  font-weight: 700;
+  font-size: 36px;
+  width: 100%;
+  margin-bottom: 16px;
+  
+}
+
+.price-bucks > span::before {
+  content: "$";
+}
+
+.price-euro > span::before {
+  content: "€";
+}
+
+.price-per-month > span::after {
+  content: "per month";
+  display: block;
+  font-size: 16px;
+  text-transform: lowercase;
+  color: #b3b3b3;
+}
+
+.services ul{
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 5px 20px;
+}
+
+.services ul li {
+  margin-top: 5px;
+}
+
+.services ul li:first-of-type {
+  margin-top: 0;
+}
+
+.btn{
+  text-transform: uppercase;
+  padding: 10px 30px;
+  margin:20px;
+  color: #fff;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.block-purple .btn{
+  background-color: var(--purple);
+}
+
+.block-orange .btn{
+  background-color: var(--orange);
+}
+
+.block-blue .btn{
+  background-color: var(--blue);
+}
+
+.block-green .btn{
+  background-color: var(--green);
+}

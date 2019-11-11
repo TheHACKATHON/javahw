@@ -1,0 +1,105 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: #ebebeb;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+main {
+  width: 100%;
+  overflow: auto;
+}
+
+.sidebar {
+  height: 100%;
+  width: 260px;
+  background-color: #ddd;
+  display: flex;
+  flex-flow: column nowrap;
+  flex-shrink: 0;
+  z-index: 100;
+}
+.sidebar.right {
+  order: 2;
+}
+.sidebar .sidebar-btn {
+  padding: 2px;
+  background-color: #f5f5f5;
+  border: 0;
+  border-radius: 2px;
+  margin-left: 5px;
+}
+.sidebar .side-title {
+  height: 44px;
+  line-height: 44px;
+  background-color: rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-weight: 600;
+}
+.sidebar .side-items {
+  overflow: auto;
+}
+.sidebar .side-items .item {
+  position: relative;
+  cursor: pointer;
+  font-size: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.75);
+  user-select: none;
+  display: flex;
+  flex-flow: column nowrap;
+}
+.sidebar .side-items .item input[type=checkbox] {
+  display: none;
+}
+.sidebar .side-items .item label {
+  padding: 3px 15px;
+  cursor: pointer;
+}
+.sidebar .side-items .item .collapse:checked + label:before {
+  content: "▾";
+}
+.sidebar .side-items .item .collapse:checked ~ .item {
+  height: auto;
+}
+.sidebar .side-items .item .collapse:checked ~ .item a {
+  padding: 3px 15px 3px 30px;
+}
+.sidebar .side-items .item:not(.subItem) label:before {
+  content: "▹";
+  position: absolute;
+  margin-left: -13px;
+}
+.sidebar .side-items .item.selected {
+  background-color: #39f;
+  color: #fff;
+}
+.sidebar .side-items .item .subItem {
+  height: 0;
+  padding: 0;
+}
+.sidebar .side-items .item .subItem a {
+  color: rgba(0, 0, 0, 0.75);
+  text-decoration: none;
+}
+.sidebar .side-items .item .subItem a:hover {
+  color: rgba(0, 0, 0, 0.85);
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=site.css.map */

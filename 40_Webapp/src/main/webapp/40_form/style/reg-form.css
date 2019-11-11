@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f5f5f5;
+}
+
+a {
+  text-decoration: none;
+  color: #008b8b;
+  transition: color 0.2s ease;
+}
+a:hover {
+  text-decoration: none;
+  color: #006767;
+}
+
+form {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 15px 30px;
+  display: flex;
+  flex-flow: row wrap;
+  background-color: #f5f5f5;
+  box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.5);
+  user-select: none;
+}
+form hr {
+  width: 110%;
+  margin: 0 -30px;
+  border-color: rgba(238, 238, 238, 0.62);
+}
+form input[type=button],
+form input[type=submit] {
+  background-color: #008b8b;
+  border: 0;
+  padding: 10px 40px;
+  text-transform: uppercase;
+  margin: 10px;
+  border-radius: 4px;
+  color: #fff;
+  box-shadow: 2px 1px 3px 0 rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-weight: 500;
+}
+form input[type=button]:hover,
+form input[type=submit]:hover {
+  background-color: #006767;
+}
+form .form-footer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+form .block {
+  width: 50%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+form .block input,
+form .block select {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+  padding: 5px;
+  display: inline-block;
+}
+form .block label {
+  margin: 10px;
+}
+form .block select {
+  appearance: none;
+  width: 100%;
+}
+form .block > label input:not([type=checkbox]) {
+  width: 100%;
+}
+form .block > div {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+form .block > div > label {
+  width: 100%;
+}
+form .block > div > label input {
+  width: 96%;
+}
+form .block .side-icon {
+  display: flex;
+}
+form .block .side-icon:before {
+  content: "";
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 20px;
+  display: block;
+}
+form .block .side-icon.conf-passwd:before {
+  display: none;
+}
+form .block .username:before {
+  background-image: url("/images/username.png");
+}
+form .block .email:before {
+  background-image: url("/images/email.png");
+}
+form .block .passwd:before {
+  background-image: url("/images/pswd.png");
+}
+
+@media screen and (max-width: 900px) {
+  form {
+    flex-flow: column nowrap;
+  }
+  form .block {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 600px) {
+  form .block {
+    width: 100%;
+  }
+  form .block > div {
+    flex-flow: column nowrap;
+  }
+  form .block > div label {
+    width: auto;
+  }
+  form .block .side-icon.conf-passwd:before {
+    display: block;
+  }
+}
+
+/*# sourceMappingURL=reg-form.css.map */

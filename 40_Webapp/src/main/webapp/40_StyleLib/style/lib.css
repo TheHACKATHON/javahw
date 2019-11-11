@@ -1,0 +1,200 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+input,
+label,
+textarea {
+  font-family: "Roboto", sans-serif;
+  outline: none;
+}
+
+input[type=text] {
+  border: 0;
+  box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+  padding: 10px 30px 10px 15px;
+  border-radius: 2px;
+  margin: 5px;
+}
+input[type=text].valid {
+  box-shadow: 0 1px 0 0 #309735, 0 0 0 1px #41ad49;
+  color: #309735;
+}
+input[type=text].valid + label {
+  vertical-align: middle;
+  display: inline-block;
+  position: relative;
+  left: -10px;
+}
+input[type=text].valid + label::after {
+  content: "";
+  margin-left: -25px;
+  background-image: url("/images/valid.png");
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+input[type=text].invalid {
+  box-shadow: 0 1px 0 0 #c32a42, 0 0 0 1px #e44061;
+  color: #c32a42;
+}
+input[type=text].invalid + label {
+  vertical-align: middle;
+  display: inline-block;
+  position: relative;
+  left: -10px;
+}
+input[type=text].invalid + label::after {
+  content: "";
+  margin-left: -25px;
+  background-image: url("/images/invalid.png");
+  background-size: 16px 20px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 16px;
+  height: 20px;
+}
+input[type=radio] {
+  display: none;
+}
+input[type=radio] + label > span {
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  margin: -5px 0 0 0;
+  vertical-align: middle;
+  background-color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 1px 0 0 #2c7731, 0 0 0 1px #309735;
+  user-select: none;
+  transition: display 0.2s ease;
+}
+input[type=radio] + label > span:before {
+  content: "";
+  display: inline-block;
+  transition: 0.2s ease;
+  margin: 0 0 6px 9px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: #309735;
+  width: 0;
+  height: 0;
+}
+input[type=radio]:checked + label > span:before {
+  width: 13px;
+  height: 13px;
+  margin: -4px 0px 0px 2px;
+}
+input[type=button] {
+  font-family: "Roboto", sans-serif;
+  background-color: #309735;
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 4px;
+  color: #f1f5f3;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  outline: none;
+  margin: 4px 2px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+input[type=button].rounded {
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+}
+input[type=button].danger {
+  background-color: #c32a42;
+}
+input[type=button].disabled, input[type=button]:disabled {
+  background-color: #808080;
+}
+input[type=button]:enabled.hover, input[type=button]:enabled:hover {
+  background-color: #2c7731;
+}
+input[type=button]:enabled.hover.danger, input[type=button]:enabled:hover.danger {
+  background-color: #97293f;
+}
+input[type=button]:enabled.active, input[type=button]:enabled:active {
+  background-color: #41ad49;
+}
+input[type=button]:enabled.active.danger, input[type=button]:enabled:active.danger {
+  background-color: #e44061;
+}
+
+label.minus, label.plus {
+  color: #f1f5f3;
+  font-weight: 600;
+}
+label.minus input[type=button], label.plus input[type=button] {
+  color: rgba(0, 0, 0, 0);
+}
+label.plus:before {
+  content: "+";
+  display: inline-block;
+  position: relative;
+  left: 26px;
+  text-align: center;
+}
+label.minus:before {
+  content: "-";
+  display: inline-block;
+  position: relative;
+  left: 24px;
+  text-align: center;
+}
+
+.switch {
+  margin: 10px;
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 20px;
+  user-select: none;
+}
+.switch input[type=checkbox] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.switch input[type=checkbox]:checked + .slider {
+  box-shadow: 0 1px 0 0 #97293f, 0 0 0 1px #c32a42;
+}
+.switch input[type=checkbox]:checked + .slider:before {
+  background-color: #c32a42;
+  transform: translateX(14px);
+}
+.switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  transition: 0.2s;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 0 #2c7731, 0 0 0 1px #309735;
+}
+.switch .slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  top: 2px;
+  background-color: #309735;
+  transition: 0.2s;
+  border-radius: 3px;
+}
+
+textarea {
+  border: 0;
+  box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+  border-radius: 4px;
+  padding: 8px 16px;
+}
+
+/*# sourceMappingURL=lib.css.map */

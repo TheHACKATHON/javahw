@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+$lite-green: #41ad49;
+//$green: #459421;
+$green: #309735;
+$dark-green: #2c7731;
+$lite-red: #e44061;
+//$red: #bc0000;
+$red: #c32a42;
+$dark-red: #97293f;
+
+input,
+label,
+textarea {
+  font-family: 'Roboto', sans-serif;
+  outline: none;
+}
+
+input {
+  &[type=text] {
+    border: 0;
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+    padding: 10px 30px 10px 15px;
+    border-radius: 2px;
+    margin: 5px;
+
+    &.valid {
+      box-shadow: 0 1px 0 0 $green, 0 0 0 1px $lite-green;
+      color: $green;
+
+      & + label {
+        vertical-align: middle;
+        display: inline-block;
+        position: relative;
+        left: -10px;
+
+        &::after {
+          content: "";
+          margin-left: -25px;
+          background-image: url("/images/valid.png");
+          background-size: 16px 16px;
+          background-repeat: no-repeat;
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+
+    &.invalid {
+      box-shadow: 0 1px 0 0 $red, 0 0 0 1px $lite-red;
+      color: $red;
+
+      & + label {
+        vertical-align: middle;
+        display: inline-block;
+        position: relative;
+        left: -10px;
+
+        &::after {
+          content: "";
+          margin-left: -25px;
+          background-image: url("/images/invalid.png");
+          background-size: 16px 20px;
+          background-repeat: no-repeat;
+          display: inline-block;
+          width: 16px;
+          height: 20px;
+        }
+      }
+    }
+  }
+
+  &[type="radio"] {
+    display: none;
+
+    & + label > span {
+      display: inline-block;
+      width: 17px;
+      height: 17px;
+      margin: -5px 0 0 0;
+      vertical-align: middle;
+      background-color: #fff;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 1px 0 0 $dark-green, 0 0 0 1px $green;
+      user-select: none;
+      transition: display .2s ease;
+    }
+
+    & + label > span:before {
+      content: "";
+      display: inline-block;
+      transition: .2s ease;
+      margin: 0 0 6px 9px;
+      border-radius: 50%;
+      cursor: pointer;
+      background-color: $green;
+      width: 0;
+      height: 0;
+    }
+
+    &:checked + label > span:before {
+      width: 13px;
+      height: 13px;
+      margin: -4px 0px 0px 2px;
+    }
+  }
+
+  &[type=button] {
+    font-family: "Roboto", sans-serif;
+    background-color: $green;
+    padding: 8px 16px;
+    border: 0;
+    border-radius: 4px;
+    color: #f1f5f3;
+    font-weight: 500;
+    letter-spacing: .5px;
+    outline: none;
+    margin: 4px 2px;
+    transition: background-color .2s ease;
+    cursor: pointer;
+
+    &.rounded {
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      padding: 0;
+    }
+
+    &.danger {
+      background-color: $red;
+    }
+
+    &.disabled,
+    &:disabled {
+      background-color: #808080;
+    }
+
+    &:enabled {
+      &.hover,
+      &:hover {
+        background-color: $dark-green;
+
+        &.danger {
+          background-color: $dark-red;
+        }
+      }
+
+      &.active,
+      &:active {
+        background-color: $lite-green;
+
+        &.danger {
+          background-color: $lite-red;
+        }
+      }
+    }
+  }
+}
+
+label{
+  &.minus,
+  &.plus {
+    // font-size: 0;
+    //  display: inline-flex;
+    color: #f1f5f3;
+    font-weight: 600;
+    input[type=button] {
+      color: rgba(0, 0, 0, 0);
+    }
+  }
+
+  &.plus:before {
+    content: "+";
+    display: inline-block;
+    position: relative;
+    left: 26px;
+    text-align: center;
+  }
+
+  &.minus:before {
+    content: "-";
+    display: inline-block;
+    position: relative;
+    left: 24px;
+    text-align: center;
+  }
+}
+
+.switch {
+  margin: 10px;
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 20px;
+  user-select: none;
+
+  input[type=checkbox] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked + .slider {
+      box-shadow: 0 1px 0 0 $dark-red, 0 0 0 1px $red;
+
+      &:before {
+        background-color: $red;
+        transform: translateX(14px);
+      }
+    }
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    transition: 0.2s;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 0 $dark-green, 0 0 0 1px $green;
+
+    &:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 2px;
+      top: 2px;
+      background-color: $green;
+      transition: 0.2s;
+      border-radius: 3px;
+    }
+  }
+}
+
+textarea {
+  border: 0;
+  box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+  border-radius: 4px;
+  padding: 8px 16px;
+}

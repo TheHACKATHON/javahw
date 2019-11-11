@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Style Lib Demo</title>
+    <link rel="stylesheet" href="./style/lib.css">
+</head>
+<body>
+<div class="root" style="padding: 10px;">
+    <h3>Inputs</h3>
+    <div class="row">
+        <input type="text" id="default-input" placeholder="Enter come text">
+        <label for="default-input"></label>
+        <input id="valid-input" type="text" class="valid" value="valid text">
+        <label for="valid-input"></label>
+        <input id="invalid" type="text" class="invalid" value="invalid text">
+        <label for="invalid"></label>
+    </div>
+
+    <h3>Check boxes</h3>
+    <div class="row">
+        <label>
+            <label class="switch">
+                <input type="checkbox"/>
+                <span class="slider"></span>
+            </label>
+            Sub
+        </label>
+        <label>
+            <label class="switch">
+                <input checked type="checkbox"/>
+                <span class="slider red"></span>
+            </label>
+            Sub
+        </label>
+    </div>
+
+    <h3>Radio buttons</h3>
+    <div class="row">
+        <span>Gender:</span>
+        <input type="radio" id="gMale" name="gender" value="male" checked/>
+        <label for="gMale">
+            <span></span>
+            Male
+        </label>
+
+        <input type="radio" id="gFemale" name="gender" value="female"/>
+        <label for="gFemale">
+            <span></span>
+            Female
+        </label>
+    </div>
+
+    <h3>Buttons</h3>
+    <div class="row">
+        <input value="Default" type="button">
+        <input class="active" value="Active" type="button">
+        <input class="hover" value="Hover" type="button">
+        <input class="danger" value="Danger" type="button">
+        <input class="danger active" value="Active" type="button">
+        <input class="danger hover" value="Hover" type="button">
+        <input class="disabled" disabled value="Disabled" type="button">
+
+        <label class="plus">
+            <input class="rounded" type="button" value="+">
+        </label>
+
+        <label class="minus">
+            <input class="danger rounded" type="button" value="-">
+        </label>
+    </div>
+
+    <h3>Text area</h3>
+    <label>
+        <textarea cols="60" rows="6" placeholder="Enter some text..."></textarea>
+    </label>
+</div>
+</body>
+</html>
