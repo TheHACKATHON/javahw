@@ -1,29 +1,32 @@
 package com.yevseienko.models;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.time.LocalDate;
 
-public class User{
+public class User implements Serializable {
 	private final String username;
-	private final String passwordHash;
+	private String passwordHash;
 	private String email;
 	private String firstName;
 	private String lastName;
 	private String gender;
-	private Date birth;
+	private LocalDate birth;
 	private boolean subscribe;
 	private String cookie;
 
-	public User(String username, String passwordHash, String cookie) {
+	public User(String username) {
 		this.username = username;
-		this.passwordHash = passwordHash;
-		this.cookie = cookie;
 	}
 
 	public void setCookie(String cookie){
 		this.cookie = cookie;
 	}
 
-	public void setAdditionalInfo(String email, String firstName, String lastName, String gender, Date birth, boolean subscribe){
+	public void setPasswordHash(String passwordHash) {
+		this.passwordHash = passwordHash;
+	}
+
+	public void setAdditionalInfo(String email, String firstName, String lastName, String gender, LocalDate birth, boolean subscribe){
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -60,7 +63,7 @@ public class User{
 		return gender;
 	}
 
-	public Date getBirth() {
+	public LocalDate getBirth() {
 		return birth;
 	}
 

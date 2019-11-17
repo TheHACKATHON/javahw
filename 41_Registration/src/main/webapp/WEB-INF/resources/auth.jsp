@@ -1,3 +1,4 @@
+<jsp:useBean id="error" scope="request" type="java.lang.String"/>
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,21 +10,40 @@
     <title>Form</title>
 </head>
 <body>
+<div class="error">
+    <span><%=error%></span>
+</div>
+<form method="post" action="/login">
+    <div class="block">
+        <h3>Login form</h3>
+        <label class="username side-icon">
+            <input type="text" placeholder="Username" name="username" required>
+        </label>
+        <label class="passwd side-icon">
+            <input type="password" name="password" placeholder="Password" required>
+        </label>
+    </div>
+    <hr>
+    <div class="form-footer">
+        <input type="submit" value="Login">
+    </div>
+</form>
+
 <form method="post" action="/registration">
     <div class="block">
         <h3>Registration form</h3>
         <label class="username side-icon">
-            <input id="username" type="text" placeholder="Username" required>
+            <input type="text" placeholder="Username" name="username" required>
         </label>
         <label class="email side-icon">
-            <input id="email" type="email" placeholder="Email address" required>
+            <input type="email" placeholder="Email address" name="email" required>
         </label>
         <div>
             <label class="passwd side-icon">
-                <input id="passwd" type="password" placeholder="Password" required>
+                <input type="password" name="password" placeholder="Password" required>
             </label>
             <label class="conf-passwd side-icon">
-                <input id="conf-passwd" type="password" placeholder="Confirm password" required>
+                <input type="password" placeholder="Confirm password" name="conf-password" required>
             </label>
         </div>
     </div>
@@ -31,10 +51,10 @@
         <h3>Personal details</h3>
         <div>
             <label>
-                <input id="f-name" type="text" placeholder="First name" required>
+                <input type="text" name="first" placeholder="First name" required>
             </label>
             <label>
-                <input id="l-name" type="text" placeholder="Last name" required>
+                <input type="text" name="last" placeholder="Last name" required>
             </label>
         </div>
         <div>
@@ -46,7 +66,7 @@
                 </select>
             </label>
             <label>
-                <input id="birth-date" type="date" placeholder="mm/dd/yyyy" required>
+                <input type="date" placeholder="mm/dd/yyyy" name="birth" required>
             </label>
         </div>
     </div>
@@ -62,8 +82,9 @@
     </div>
     <hr>
     <div class="form-footer">
-        <input type="submit">
+        <input type="submit" value="Register">
     </div>
 </form>
+
 </body>
 </html>
