@@ -2,6 +2,7 @@
 ## Java homeworks
 ☑️|Id|Issued    |Subject|Link
 -|--|----------|-------|----
+✅|42|11.11.2019| js |[10 tasks](/42_js)
 ✅|41|6.11.2019| Java EE Registration |[Registration](/41_Registration)
 ✅|40|04.11.2019| Java EE |[Java server(hw parser) with 3 pages(Credit card form, Registration form, CSS lib)](/40_Webapp)
 ✅|39|30.10.2019| CSS |[3 tasks(menu, table, price)](/39_html)
