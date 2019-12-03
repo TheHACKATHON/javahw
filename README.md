@@ -2,6 +2,11 @@
 ## Java homeworks
 ☑️|Id|Issued    |Subject|Link
 -|--|----------|-------|----
+✅|48|02.12.2019| sql |[academy](/48_sql_academy)
+✅|47|27.11.2019| js |[desktop](/47_js)
+✅|46|25.11.2019| js |[todo](/46_js)
+✅|45|20.11.2019| js |[carousel](/45_js)
+✅|44|18.11.2019| js |[QUnit](/44_js)
 ✅|43|13.11.2019| js |[9 tasks](/43_js)
 ✅|42|11.11.2019| js |[10 tasks](/42_js)
 ✅|41|6.11.2019| Java EE Registration |[Registration](/41_Registration)
