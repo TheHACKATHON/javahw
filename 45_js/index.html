@@ -12,23 +12,29 @@
 <body>
 <div id="slider">
   <div id="slide-holder">
-    <div class="slide"><img src="./images/124-1280x720.jpg" alt="" /></div>
-    <div class="slide"><img src="./images/229-1280x720.jpg" alt="" /></div>
-    <div class="slide"><img src="./images/249-1280x720.jpg" alt="" /></div>
-    <div class="slide"><img src="./images/284-1280x720.jpg" alt="" /></div>
-    <div class="slide"><img src="./images/368-1280x720.jpg" alt="" /></div>
-    <div class="slide"><img src="./images/467-1280x720.jpg" alt="" /></div>
-    <div class="slide"><img src="./images/817-1280x720.jpg" alt="" /></div>
-    <div class="slide"><img src="./images/872-1280x720.jpg" alt="" /></div>
-    <div class="slide"><img src="./images/923-1280x720.jpg" alt="" /></div>
-    <div class="slide"><img src="./images/970-1280x720.jpg" alt="" /></div>
+    <div class="slide"><img src="./images/124-1280x720.jpg" alt=""/></div>
+    <div class="slide"><img src="./images/229-1280x720.jpg" alt=""/></div>
+    <div class="slide"><img src="./images/249-1280x720.jpg" alt=""/></div>
+    <div class="slide"><img src="./images/284-1280x720.jpg" alt=""/></div>
+    <div class="slide"><img src="./images/368-1280x720.jpg" alt=""/></div>
+    <div class="slide"><img src="./images/467-1280x720.jpg" alt=""/></div>
+    <div class="slide"><img src="./images/817-1280x720.jpg" alt=""/></div>
+    <div class="slide"><img src="./images/872-1280x720.jpg" alt=""/></div>
+    <div class="slide"><img src="./images/923-1280x720.jpg" alt=""/></div>
+    <div class="slide"><img src="./images/970-1280x720.jpg" alt=""/></div>
   </div>
 </div>
 <div class="panel">
-  <button id="next">next</button>
-  <button id="prev">prev</button>
-  <button id="auto-play">start autoplay</button>
+  <button id="slider-prev" class="button"></button>
+  <div>
+    <input type="checkbox" id="slider-auto-play">
+    <label id="slider-auto-play-label" class="button" for="slider-auto-play"></label>
+    <label>
+      Interval
+      <input id="slider-interval" type="number" min="500">
+    </label>
+  </div>
+  <button id="slider-next" class="button"></button>
 </div>
-
 </body>
 </html>

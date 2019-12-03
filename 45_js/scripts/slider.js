@@ -9,26 +9,36 @@ export const Slider = {
   selectors: {
     s_slider: "#slide-holder",
     s_slide: ".slide",
-    s_sliderNext: "#next",
-    s_sliderPrev: "#prev",
-    s_sliderAutoPlay: "#auto-play",
+    s_sliderNext: "#slider-next",
+    s_sliderPrev: "#slider-prev",
+    s_sliderAutoPlay: "#slider-auto-play",
+    s_sliderAutoPlayInterval: "#slider-interval",
   },
   state: {
     current: 0,
-    count: 3,
+    count: 0,
     width: 0,
     timer: null,
-    interval: 3000,
+    interval: {
+      current: 0,
+      default: 3000,
+      min: 500
+    },
   },
   init() {
     this.setUpListeners();
     this.getSlidesCount();
     this.getSlideWidth();
+    this.onChangeInterval(this.state.interval.default, true);
   },
   setUpListeners() {
     qs(this.selectors.s_sliderNext).addEventListener('click', () => this.onNext());
     qs(this.selectors.s_sliderPrev).addEventListener('click', () => this.onPrev());
     qs(this.selectors.s_sliderAutoPlay).addEventListener('click', () => this.onAutoPlay());
+    qs(this.selectors.s_sliderAutoPlayInterval).addEventListener('change', (e) => {
+      const val = e.target.value;
+      this.onChangeInterval(val);
+    });
     window.addEventListener('resize', () => {
       this.getSlideWidth();
       this.onUpdate();
@@ -70,18 +80,30 @@ export const Slider = {
   },
   onStartAutoPlay() {
     const state = this.state;
-    state.timer = setInterval(() => this.onNext(), +state.interval);
+    if (state.timer) {
+      this.onStopAutoPlay();
+    }
+    state.timer = setInterval(() => this.onNext(), state.interval.current);
   },
   onStopAutoPlay() {
-    const state = this.state;
-    clearInterval(state.timer);
-    state.timer = null;
+    clearInterval(this.state.timer);
+    this.state.timer = null;
   },
   onUpdate() {
-    const state = this.state;
-    qs('#slide-holder').style.transform = `translateX(-${state.width * state.current}px)`;
+    qs('#slide-holder').style.transform = `translateX(-${this.state.width * this.state.current}px)`;
   },
-  onChangeInterval() {
-
+  onChangeInterval(val, changeElem) {
+    const state = this.state;
+    if (val && isFinite(+val) && +val >= state.interval.min) {
+      state.interval.current = +val;
+      if(changeElem){
+        qs(this.selectors.s_sliderAutoPlayInterval).value = +val;
+      }
+      if (state.timer) {
+        this.onStartAutoPlay();
+      }
+    } else {
+      alert("invalid interval, minimum 500");
+    }
   },
 };
