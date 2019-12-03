@@ -1,0 +1,46 @@
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.panel {
+  width: 1280px;
+  margin: 0 auto;
+}
+
+#slider {
+  width: 1280px;
+  height: 720px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+#slider #slide-holder {
+  display: flex;
+  flex-flow: row nowrap;
+  position: relative;
+  left: 0;
+  transition: transform 0.3s;
+}
+#slider #slide-holder .slide {
+  width: 1280px;
+  height: 720px;
+  float: left;
+  position: relative;
+}
+
+@media screen and (max-width: 1280px) {
+  #slider {
+    width: 100%;
+    height: auto;
+  }
+  #slider #slide-holder .slide {
+    width: 100%;
+    height: auto;
+  }
+  #slider #slide-holder .slide img {
+    width: 100vw;
+  }
+}
+
+/*# sourceMappingURL=slider.css.map */
