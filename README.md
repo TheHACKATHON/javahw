@@ -2,6 +2,8 @@
 ## Java homeworks
 ☑️|Id|Issued    |Subject|Link
 -|--|----------|-------|----
+✅|50|09.12.2019| sql |[Registration v2](/41_Registration)
+✅|49|04.12.2019| sql |[movie](/49_sql_movie)
 ✅|48|02.12.2019| sql |[academy](/48_sql_academy)
 ✅|47|27.11.2019| js |[desktop](/47_js)
 ✅|46|25.11.2019| js |[todo](/46_js)

@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class User implements Serializable {
-	private final String username;
+	//region fields
+
+	private String username;
 	private String passwordHash;
 	private String email;
 	private String firstName;
@@ -14,9 +16,15 @@ public class User implements Serializable {
 	private boolean subscribe;
 	private String cookie;
 
+	//endregion
+	//region constructors
+
 	public User(String username) {
 		this.username = username;
 	}
+
+	//endregion
+	//region public methods
 
 	public void setCookie(String cookie){
 		this.cookie = cookie;
@@ -34,6 +42,9 @@ public class User implements Serializable {
 		this.birth = birth;
 		this.subscribe = subscribe;
 	}
+
+	//endregion
+	//region getters
 
 	public String getUsername() {
 		return username;
@@ -70,4 +81,6 @@ public class User implements Serializable {
 	public boolean isSubscribe() {
 		return subscribe;
 	}
+
+	//endregion
 }

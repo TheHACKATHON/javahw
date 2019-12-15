@@ -39,7 +39,10 @@ public class HomeServlet extends HttpServlet {
 
     ServletContext servletContext = config.getServletContext();
     String contextPathStr = servletContext.getRealPath(File.separator);
+    initXml(servletContext, contextPathStr);
+  }
 
+  private void initXml(ServletContext servletContext, String contextPathStr){
     final String separator = ">";
     String pathDestructedStr = servletContext.getInitParameter("usersXmlFile");
     String[] pathDestructed = pathDestructedStr.split(separator);

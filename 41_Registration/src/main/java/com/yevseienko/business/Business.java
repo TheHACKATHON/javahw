@@ -1,7 +1,8 @@
 package com.yevseienko.business;
 
 import com.yevseienko.data.IData;
-import com.yevseienko.data.XmlData;
+import com.yevseienko.data.MySQLData;
+import com.yevseienko.data.config.MySQLDbConfig;
 import com.yevseienko.models.User;
 
 import javax.servlet.http.Cookie;
@@ -13,12 +14,29 @@ import java.util.UUID;
 import static org.apache.commons.text.StringEscapeUtils.escapeHtml4;
 
 public class Business {
+  //region fields
+
   private IData data;
 
+  //endregion
+  //region constructors
+
   public Business() {
-    data = new XmlData();
+    String dbDomain = "step.netspasibo.space";
+    String dbName = "my_site_db";
+    String dbUser = "root";
+    String dbPassword = "2520LitresOfSecrets";
+    String serverTimeZone = "Europe/Kiev";
+    String encoding = "utf8";
+    // TODO: move to web.xml
+    // TODO: add constructor Business(IData)
+
+    MySQLDbConfig dbConfig = new MySQLDbConfig(dbDomain, dbName, serverTimeZone, encoding, dbUser, dbPassword);
+    data = new MySQLData(dbConfig);
   }
 
+  //endregion
+  //region public methods
   public User isLogined(Cookie[] cookies, String authCookieName) {
     if (cookies != null) {
       Optional<Cookie> cookieOpt = Arrays.stream(cookies).filter(c -> escapeHtml4(c.getName()).equals(authCookieName)).findFirst();
@@ -40,6 +58,7 @@ public class Business {
     user.setCookie(cookie);
     user.setPasswordHash(passwordHash);
     this.data.addUser(user);
+    this.data.setCookieToUser(user.getCookie(), user.getUsername());
     return user.getCookie();
   }
 
@@ -48,9 +67,9 @@ public class Business {
     if(user != null){
       if (MD5.verifyPassword(password, user.getPasswordHash())) {
         user.setCookie(generateCookie());
-        data.setCookieToUser(user.getCookie(), username);
+        data.setCookieToUser(user.getCookie(), user.getUsername());
+        return user;
       }
-      return user;
     }
     return null;
   }
@@ -59,8 +78,12 @@ public class Business {
     return data.getUsers();
   }
 
+  //endregion
+  //region private methods
+
   private String generateCookie() {
     return UUID.randomUUID().toString();
   }
-}
 
+  //endregion
+}

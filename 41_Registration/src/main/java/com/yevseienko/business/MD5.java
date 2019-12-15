@@ -5,11 +5,17 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class MD5{
-	private static String salt = "HZF622KA5A6TUQII";
+	//region fields
+
+	private static final String salt = "HZF622KA5A6TUQII";
 	// static salt
+
+	//endregion
+	//region public methods
 
 	public static String hash(String password){
 		try {
+			// TODO: add dynamic salt, store in db
 			MessageDigest md = MessageDigest.getInstance("MD5");
 			md.update((salt + password).getBytes());
 			byte[] digest = md.digest();
@@ -24,4 +30,5 @@ public class MD5{
 		return hash.equals(hash(password));
 	}
 
+	//endregion
 }
