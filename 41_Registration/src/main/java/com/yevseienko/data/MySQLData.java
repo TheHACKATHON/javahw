@@ -34,8 +34,8 @@ public class MySQLData implements IData {
   //region fields
 
   private final MySQLDbConfig dbConfig;
+  private final int defaultGender = 1;
   private static Map<String, Integer> genders;
-  private static int defaultGender = 1;
 
   //endregion
   //region constructors

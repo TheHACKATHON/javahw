@@ -1,7 +1,6 @@
 package com.yevseienko.servlets;
 
 import com.yevseienko.business.Business;
-import com.yevseienko.data.XmlData;
 import com.yevseienko.models.User;
 
 import javax.servlet.ServletConfig;
@@ -10,11 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
 
 public class HomeServlet extends HttpServlet {
   private Business business;
@@ -36,19 +31,5 @@ public class HomeServlet extends HttpServlet {
   public void init(ServletConfig config) throws ServletException {
     super.init(config);
     business = new Business();
-
-    ServletContext servletContext = config.getServletContext();
-    String contextPathStr = servletContext.getRealPath(File.separator);
-    initXml(servletContext, contextPathStr);
-  }
-
-  private void initXml(ServletContext servletContext, String contextPathStr){
-    final String separator = ">";
-    String pathDestructedStr = servletContext.getInitParameter("usersXmlFile");
-    String[] pathDestructed = pathDestructedStr.split(separator);
-    Path usersXmlPath = Paths.get(pathDestructed[0], Arrays.copyOfRange(pathDestructed, 1, pathDestructed.length)).normalize();
-    String usersXmlPathStr = File.separator + usersXmlPath.toString();
-
-    XmlData.loadData(contextPathStr, usersXmlPathStr);
   }
 }

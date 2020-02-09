@@ -35,7 +35,6 @@ public class RegistrationServlet extends HttpServlet {
         throw new IllegalArgumentException("Passwords don't match");
       }
 
-      // если не ескейпить, то можно вставить скрипт
       String username = escapeHtml4(map.getOrDefault("username", defaultValue)[0]);
       String email = escapeHtml4(map.getOrDefault("email", defaultValue)[0]);
       String firstName = escapeHtml4(map.getOrDefault("first", defaultValue)[0]);

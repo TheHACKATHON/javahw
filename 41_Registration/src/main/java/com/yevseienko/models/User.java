@@ -1,5 +1,3 @@
-package com.yevseienko.models;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 
