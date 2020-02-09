@@ -51,10 +51,15 @@
 
     <!-- Side Widget -->
     <div class="card my-4">
-        <h5 class="card-header">Side Widget</h5>
+        <h5 class="card-header">Users statistic</h5>
         <div class="card-body">
-            You can put anything you want inside of these side widgets. They are easy to use, and feature the
-            new Bootstrap 4 card containers!
+            <div>
+                <span>Current online: <strong>${empty applicationScope.currentUsers ? "0" : applicationScope.currentUsers }</strong></span>
+            </div>
+            <div>
+                <span>Total: <strong>${empty applicationScope.totalUsers ? "0" : applicationScope.totalUsers}</strong></span>
+            </div>
+
         </div>
     </div>
 </div>

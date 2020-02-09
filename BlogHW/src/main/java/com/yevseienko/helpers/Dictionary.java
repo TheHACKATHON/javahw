@@ -4,6 +4,9 @@ public class Dictionary {
   public static class SessionAttribute {
     public static final String USER = "user";
     public static final String LAST_EMAIL = "lastEmail";
+
+    public static final String CURRENT_USERS_COUNT = "currentUsers";
+    public static final String TOTAL_USERS_COUNT = "totalUsers";
   }
 
   public static class URL {
